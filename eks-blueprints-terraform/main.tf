@@ -82,8 +82,8 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 19.15"
 
-  cluster_name                   = local.name
-  cluster_version                = "1.27"
+  cluster_name                   = rohan-eks
+  cluster_version                = "1.30"
   cluster_endpoint_public_access = true
 
   # EKS Addons
@@ -101,10 +101,10 @@ module "eks" {
 
   eks_managed_node_groups = {
     initial = {
-      instance_types = ["m5.large"]
+      instance_types = ["t2.medium"]
 
       min_size     = 1
-      max_size     = 5
+      max_size     = 3
       desired_size = 2
     }
   }
